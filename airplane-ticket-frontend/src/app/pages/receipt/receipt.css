@@ -1,0 +1,41 @@
+.receipt-container {
+  display: flex;
+  justify-content: center;
+  padding: 40px;
+  font-family: Arial, sans-serif;
+  background: #f4f6f8;
+  min-height: 100vh;
+}
+
+.receipt-card {
+  background: white;
+  width: 420px;
+  padding: 25px;
+  border-radius: 12px;
+  box-shadow: 0 6px 18px rgba(0,0,0,0.15);
+  text-align: center;
+}
+
+.status {
+  color: green;
+  font-weight: bold;
+}
+
+hr {
+  margin: 15px 0;
+}
+
+button {
+  margin-top: 20px;
+  background: blue;
+  color: white;
+  border: none;
+  padding: 10px;
+  width: 100%;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+h4 {
+  color: green;
+}

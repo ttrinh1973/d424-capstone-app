@@ -1,0 +1,55 @@
+<div class="flight-details-container">
+
+
+  <div class="card" *ngIf="flight; else allFlights">
+
+    <h2>✈️ Flight Details</h2>
+
+    <p><strong>Airline:</strong> {{ flight.airline }}</p>
+    <p><strong>From:</strong> {{ flight.departure }}</p>
+    <p><strong>To:</strong> {{ flight.destination }}</p>
+    <p><strong>Departure:</strong> {{ flight.departureTime }}</p>
+    <p><strong>Arrival:</strong> {{ flight.arrivalTime }}</p>
+    <p><strong>Price:</strong> ${{ flight.price }}</p>
+
+
+    <button class="btn" [routerLink]="['/booking', flight.id]">
+      Book This Flight
+    </button>
+
+    <button class="btn secondary" (click)="goBack()">
+      ← Back
+    </button>
+
+    <button class="btn secondary" (click)="viewAllFlights()">
+      View All Flights
+    </button>
+
+  </div>
+
+
+  <ng-template #allFlights>
+
+    <div class="card">
+
+      <h2>✈️ All Flights</h2>
+
+      <div *ngFor="let f of flights" class="flight-item">
+
+        <p><strong>{{ f.airline }}</strong></p>
+        <p>{{ f.departure }} → {{ f.destination }}</p>
+        <p>${{ f.price }}</p>
+
+
+        <button [routerLink]="['/booking', f.id]">
+          Book This Flight
+        </button>
+
+        <hr />
+      </div>
+
+    </div>
+
+  </ng-template>
+
+</div>

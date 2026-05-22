@@ -1,0 +1,82 @@
+<div class="booking-container">
+
+
+  <button type="button" (click)="loadFlights()">
+    Available Flights
+  </button>
+
+
+  <p *ngIf="loading">Before loading flights, please enter your name in the box below</p>
+
+
+  <div *ngIf="!loading && flights && flights.length > 0; else noFlights">
+
+    <h3>✈️ Available Flights</h3>
+
+    <div *ngFor="let flight of flights"
+         class="flight-card"
+         (click)="selectFlight(flight)"
+         [class.selected]="booking.flightId === flight.id">
+
+      <h3>{{ flight.airline }}</h3>
+
+      <p>
+        <b>{{ flight.departure }}</b> → <b>{{ flight.destination }}</b>
+      </p>
+
+      <p>
+        {{ flight.departureTime }} - {{ flight.arrivalTime }}
+      </p>
+
+      <p><b>${{ flight.price }}</b></p>
+
+      <small>Flight ID: {{ flight.id }}</small>
+
+    </div>
+
+  </div>
+
+
+  <ng-template #noFlights>
+    <p></p>
+  </ng-template>
+
+
+
+  <h2>🎫 Book a Flight</h2>
+
+  <div class="form-card">
+
+    <input
+      name="passengerName"
+      [(ngModel)]="booking.passengerName"
+      placeholder="Passenger Name"
+    />
+
+    <input
+      name="email"
+      [(ngModel)]="booking.email"
+      placeholder="Email"
+    />
+
+
+    <input
+      name="flightId"
+      type="number"
+      [(ngModel)]="booking.flightId"
+      placeholder="Enter Flight ID"
+    />
+
+    <p *ngIf="booking.flightId">
+      ✅ Selected Flight ID: <b>{{ booking.flightId }}</b>
+    </p>
+
+    <button (click)="bookFlight()">
+      ✈️ Book Flight
+    </button>
+
+    <button routerLink="/">⬅ Exit</button>
+
+  </div>
+
+</div>

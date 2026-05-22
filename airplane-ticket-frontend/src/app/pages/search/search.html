@@ -1,0 +1,50 @@
+<div class="search-container">
+
+  <h2>✈️ Search Flights</h2>
+
+  <div class="search-box">
+
+    <input
+      type="text"
+      [(ngModel)]="departure"
+      placeholder="Enter Departure"
+    />
+
+    <input
+      type="text"
+      [(ngModel)]="destination"
+      placeholder="Enter Destination"
+    />
+
+    <button (click)="search()">
+      ✈️ Search Flights (Double-click the button)
+    </button>
+
+    <button routerLink="/">Back to Home</button>
+
+
+  </div>
+
+
+  <div *ngIf="flights && flights.length > 0">
+
+    <div class="flight-card" *ngFor="let f of flights">
+
+      <p><b>Flight ID:</b> {{ f.id }}</p>
+      <p><b>{{ f.airline }}</b></p>
+      <p>{{ f.departure }} → {{ f.destination }}</p>
+      <p>{{ f.departureTime }} - {{ f.arrivalTime }}</p>
+      <p>$ {{ f.price }}</p>
+
+      <button (click)="bookFlight(f)">
+        Book This Flight
+      </button>
+
+    </div>
+    <div>
+      <button routerLink="/">Back to Home</button>
+    </div>
+
+  </div>
+
+</div>

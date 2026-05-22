@@ -1,0 +1,31 @@
+<div class="receipt-container">
+
+  <div class="receipt-card">
+
+    <h1>✈️ AeroAge Airlines</h1>
+    <h2>Payment Receipt</h2>
+
+    <p class="status">✅ Booking Confirmed</p>
+
+    <hr />
+
+    <p><b>Booking ID:</b> {{ receipt?.bookingId }}</p>
+    <p><b>Passenger:</b> {{ receipt?.passengerName }}</p>
+    <p><b>Email:</b> {{ receipt?.email }}</p>
+    <p><b>Airline:</b> {{ receipt?.airline }}</p>
+    <p><b>Flight ID:</b> {{ receipt?.flightId }}</p>
+
+    <p><b>Departure:</b> {{ receipt?.departure }}</p>
+    <p><b>Destination:</b> {{ receipt?.destination }}</p>
+
+    <h3>Total Paid: ${{ receipt?.price }}</h3>
+    <br>
+    <h4>A copy of this receipt will be sent to the email address you provided.</h4>
+    <p>For any flight change/update or cancellation, please contact our
+    customer service by email aeroflights@booking.com or call 1-888-111-5555</p>
+
+    <button routerLink="/">⬅ Exit</button>
+
+  </div>
+
+</div>

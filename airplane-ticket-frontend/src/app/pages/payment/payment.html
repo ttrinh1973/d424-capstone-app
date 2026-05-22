@@ -1,0 +1,47 @@
+<div class="payment-container">
+
+  <div class="payment-card">
+
+    <h2>💳 Payment Page</h2>
+
+    <p><b>Booking ID:</b> {{ bookingId }}</p>
+    <p><b>Flight ID:</b> {{ flightId }}</p>
+    <p><b>Airline:</b> {{ airline }}</p>
+    <p><b>Passenger:</b> {{ passengerName }}</p>
+    <p><b>Email:</b> {{ email }}</p>
+
+    <h3>Total: ${{ price }}</h3>
+
+    <hr>
+
+    <h3>💳 Enter Card Details</h3>
+
+
+    <input
+      type="text"
+      [(ngModel)]="cardNumber"
+      placeholder="Card Number"
+    />
+
+
+    <input
+      type="month"
+      [(ngModel)]="expiryDate"
+    />
+
+
+    <input
+      type="password"
+      [(ngModel)]="cvv"
+      placeholder="CVV"
+    />
+
+    <button (click)="payNow()">
+      Pay Now
+    </button>
+
+    <button routerLink="/">⬅ Exit</button>
+
+  </div>
+
+</div>

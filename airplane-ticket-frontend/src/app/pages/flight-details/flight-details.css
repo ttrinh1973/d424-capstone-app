@@ -1,0 +1,54 @@
+.flight-details-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 40px;
+  font-family: Arial, sans-serif;
+}
+
+.card {
+  background: white;
+  padding: 25px;
+  width: 420px;
+  border-radius: 12px;
+  box-shadow: 0 4px 14px rgba(0,0,0,0.1);
+}
+
+h2 {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.flight-title {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.info p {
+  margin: 8px 0;
+  font-size: 15px;
+}
+
+.btn {
+  width: 100%;
+  padding: 10px;
+  margin-top: 15px;
+  border: none;
+  border-radius: 8px;
+  background: #1976d2;
+  color: white;
+  cursor: pointer;
+}
+
+.btn:hover {
+  background: #125aa3;
+}
+
+.secondary {
+  background: #777;
+}
+
+.secondary:hover {
+  background: #555;
+}

@@ -1,0 +1,59 @@
+import { Injectable } from '@angular/core';
+import { HttpClient, HttpErrorResponse } from '@angular/common/http';
+import { Observable, catchError, throwError } from 'rxjs';
+
+
+export interface Flight {
+  id: number;
+  airline: string;
+  departure: string;
+  destination: string;
+  departureTime: string;
+  arrivalTime: string;
+  price: number;
+}
+
+@Injectable({
+  providedIn: 'root'
+})
+export class FlightService {
+
+
+  private baseUrl = 'http://localhost:8080/api/flights';
+
+  constructor(private http: HttpClient) {}
+
+
+  getAllFlights(): Observable<Flight[]> {
+    return this.http.get<Flight[]>(this.baseUrl)
+      .pipe(catchError(this.handleError));
+  }
+
+
+  getFlightById(id: number): Observable<Flight> {
+    return this.http.get<Flight>(`${this.baseUrl}/${id}`)
+      .pipe(catchError(this.handleError));
+  }
+
+
+  searchFlights(departure: string, destination: string): Observable<Flight[]> {
+    return this.http.get<Flight[]>(
+      `${this.baseUrl}/search?departure=${departure}&destination=${destination}`
+    ).pipe(catchError(this.handleError));
+  }
+
+
+  private handleError(error: HttpErrorResponse) {
+    console.error('🔥 Flight API Error:', error);
+
+    let message = 'Something went wrong';
+
+    if (error.status === 0) {
+      message = 'Cannot connect to backend (CORS or server down)';
+    } else {
+      message = `Server error ${error.status}`;
+    }
+
+    return throwError(() => message);
+  }
+}
