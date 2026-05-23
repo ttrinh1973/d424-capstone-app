@@ -20,9 +20,11 @@ export interface Booking {
 export class BookingService {
 
 
-  private apiUrl = `${environment.apiUrl}/bookings`;
+  private apiUrl = `${environment.apiUrl}/booking`;
 
-
+  private headers = new HttpHeaders({
+    'Content-Type': 'application/json'
+  });
 
   constructor(private http: HttpClient) {}
 
