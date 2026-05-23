@@ -20,6 +20,12 @@ export class PaymentComponent {
   email: string = '';
   price: number = 0;
 
+
+  departure: string = '';
+  destination: string = '';
+  departureTime: string = '';
+  arrivalTime: string = '';
+
   cardNumber: string = '';
   expiryDate: string = '';
   cvv: string = '';
@@ -33,6 +39,12 @@ export class PaymentComponent {
       this.passengerName = params['passengerName'];
       this.email = params['email'];
       this.price = Number(params['price']);
+
+
+      this.departure = params['departure'] || '';
+      this.destination = params['destination'] || '';
+      this.departureTime = params['departureTime'] || '';
+      this.arrivalTime = params['arrivalTime'] || '';
     });
   }
 
@@ -43,6 +55,7 @@ export class PaymentComponent {
       return;
     }
 
+
     const receipt = {
       bookingId: this.bookingId,
       flightId: this.flightId,
@@ -50,11 +63,12 @@ export class PaymentComponent {
       passengerName: this.passengerName,
       email: this.email,
       price: this.price,
-      departure: this.route.snapshot.queryParams['departure'],
-      destination: this.route.snapshot.queryParams['destination'],
-      departureTime: this.route.snapshot.queryParams['departureTime'],
-      arrivalTime: this.route.snapshot.queryParams['arrivalTime']
+      departure: this.departure,
+      destination: this.destination,
+      departureTime: this.departureTime,
+      arrivalTime: this.arrivalTime
     };
+
 
     this.router.navigate(['/receipt'], {
       queryParams: {
