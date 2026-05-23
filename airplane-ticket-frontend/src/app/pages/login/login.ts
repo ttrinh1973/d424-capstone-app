@@ -3,6 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import { Router } from '@angular/router';
 import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
+import { environment } from '../../../environments/environment';
 
 @Component({
   selector: 'app-login',
@@ -26,7 +27,6 @@ export class LoginComponent {
     private router: Router
   ) {}
 
-  // ✅ LOGIN METHOD
   login() {
     this.submitted = true;
     this.errorMessage = '';
@@ -36,29 +36,30 @@ export class LoginComponent {
       return;
     }
 
-    this.http.post<any>('http://localhost:8080/api/auth/login', this.loginRequest)
-      .subscribe({
-        next: (res) => {
+    this.http.post<any>(
+      `${environment.apiUrl}/api/auth/login`,
+      this.loginRequest
+    ).subscribe({
+      next: (res) => {
 
-          localStorage.setItem('token', res.token);
-          localStorage.setItem('role', res.role);
-          localStorage.setItem('name', res.name);
-          localStorage.setItem('email', this.loginRequest.email);
+        localStorage.setItem('token', res.token);
+        localStorage.setItem('role', res.role);
+        localStorage.setItem('name', res.name);
+        localStorage.setItem('email', this.loginRequest.email);
 
-          if (res.role === 'ADMIN') {
-            this.router.navigate(['/admin']);
-          } else {
-            this.router.navigate(['/home']);
-          }
-        },
-
-        error: () => {
-          this.errorMessage = 'Invalid email or password';
+        if (res.role === 'ADMIN') {
+          this.router.navigate(['/admin']);
+        } else {
+          this.router.navigate(['/home']);
         }
-      });
+      },
+
+      error: () => {
+        this.errorMessage = 'Invalid email or password';
+      }
+    });
   }
 
-  // ✅ LOGOUT (OUTSIDE login)
   logout() {
     localStorage.clear();
     this.router.navigate(['/login']);
