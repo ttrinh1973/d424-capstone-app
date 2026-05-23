@@ -19,7 +19,7 @@ export interface Booking {
 })
 export class BookingService {
 
-  // ✅ PRODUCTION SAFE URL (Railway or localhost via environment)
+
   private apiUrl = `${environment.apiUrl}/bookings`;
 
   private headers = new HttpHeaders({
@@ -28,9 +28,7 @@ export class BookingService {
 
   constructor(private http: HttpClient) {}
 
-  // =====================
-  // CREATE BOOKING
-  // =====================
+
   createBooking(data: Booking): Observable<Booking> {
     return this.http.post<Booking>(
       this.apiUrl,
@@ -41,9 +39,6 @@ export class BookingService {
     );
   }
 
-  // =====================
-  // GET ALL BOOKINGS
-  // =====================
   getAllBookings(): Observable<Booking[]> {
     return this.http.get<Booking[]>(
       this.apiUrl
@@ -52,9 +47,6 @@ export class BookingService {
     );
   }
 
-  // =====================
-  // DELETE BOOKING
-  // =====================
   deleteBooking(id: number): Observable<void> {
     return this.http.delete<void>(
       `${this.apiUrl}/${id}`
@@ -63,9 +55,6 @@ export class BookingService {
     );
   }
 
-  // =====================
-  // ERROR HANDLER
-  // =====================
   private handleError(error: HttpErrorResponse) {
     console.error('API Error:', error);
 
