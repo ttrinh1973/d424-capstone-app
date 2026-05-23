@@ -57,7 +57,19 @@ export class PaymentComponent {
     };
 
     this.router.navigate(['/receipt'], {
-      state: { receipt }
+      queryParams: {
+        bookingId: this.bookingId,
+        passengerName: this.passengerName,
+        email: this.email,
+        price: this.price,
+        flightId: this.flightId,
+
+        airline: this.airline,
+        departure: this.departure,
+        destination: this.destination,
+        departureTime: this.departureTime,
+        arrivalTime: this.arrivalTime
+      }
     });
   }
 }

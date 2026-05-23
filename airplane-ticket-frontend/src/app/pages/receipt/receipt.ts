@@ -16,5 +16,7 @@ export class ReceiptComponent {
   constructor() {
     const nav = history.state;
     this.receipt = nav.receipt || null;
+
+    console.log('Receipt Data:', this.receipt);
   }
 }
