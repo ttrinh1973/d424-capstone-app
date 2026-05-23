@@ -20,7 +20,7 @@ export interface Flight {
 export class FlightService {
 
 
-   private apiUrl = `${environment.apiUrl}/api/flights`;
+   private apiUrl = `${environment.apiUrl}/flights`;
 
   constructor(private http: HttpClient) {}
 
