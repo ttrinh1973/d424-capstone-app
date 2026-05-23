@@ -19,12 +19,10 @@ export interface Booking {
 })
 export class BookingService {
 
-  // ✅ FIXED: consistent base URL (NO double /api)
+
   private apiUrl = `${environment.apiUrl}/bookings`;
 
-  private headers = new HttpHeaders({
-    'Content-Type': 'application/json'
-  });
+
 
   constructor(private http: HttpClient) {}
 
