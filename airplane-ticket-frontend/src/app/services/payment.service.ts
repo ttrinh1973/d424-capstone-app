@@ -4,7 +4,7 @@ import { HttpClient } from '@angular/common/http';
 @Injectable({ providedIn: 'root' })
 export class PaymentService {
 
-  private apiUrl = `${environment.apiUrl}/payments';
+   private apiUrl = `${environment.apiUrl}/api/payment`;
 
   constructor(private http: HttpClient) {}
 

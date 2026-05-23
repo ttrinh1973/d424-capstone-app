@@ -20,7 +20,7 @@ export interface Booking {
 export class BookingService {
 
 
-  private apiUrl = `${environment.apiUrl}/bookings`;
+  private apiUrl = `${environment.apiUrl}/api/bookings`;
 
   private headers = new HttpHeaders({
     'Content-Type': 'application/json'
@@ -39,6 +39,7 @@ export class BookingService {
     );
   }
 
+
   getAllBookings(): Observable<Booking[]> {
     return this.http.get<Booking[]>(
       this.apiUrl
@@ -46,6 +47,7 @@ export class BookingService {
       catchError(this.handleError)
     );
   }
+
 
   deleteBooking(id: number): Observable<void> {
     return this.http.delete<void>(

@@ -4,7 +4,7 @@ import { FormsModule } from '@angular/forms';
 import { HttpClient } from '@angular/common/http';
 import { Router } from '@angular/router';
 import { RouterModule } from '@angular/router';
-import { environment } from '../../../environments/environment'; // ✅ IMPORTANT
+import { environment } from '../../../environments/environment';
 
 @Component({
   selector: 'app-admin',
