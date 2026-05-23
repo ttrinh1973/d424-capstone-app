@@ -18,7 +18,7 @@ export interface Flight {
 })
 export class FlightService {
 
-  // ✅ FIXED: single correct API base URL
+
   private apiUrl = `${environment.apiUrl}/flights`;
 
   constructor(private http: HttpClient) {}
