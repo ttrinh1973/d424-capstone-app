@@ -3,7 +3,7 @@ import { authGuard } from './guards/auth.guard';
 
 export const routes: Routes = [
 
-  // PUBLIC
+
   {
     path: '',
     redirectTo: 'login',
