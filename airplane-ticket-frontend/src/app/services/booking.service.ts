@@ -1,7 +1,7 @@
 import { HttpClient, HttpHeaders, HttpErrorResponse } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable, catchError, throwError } from 'rxjs';
-import { environment } from '../environments/environment';
+import { environment } from 'src/environments/environment';
 
 export interface Booking {
   id?: number;
@@ -19,8 +19,8 @@ export interface Booking {
 })
 export class BookingService {
 
-
-  private apiUrl = `${environment.apiUrl}/api/bookings`;
+  // ✅ FIXED: consistent base URL (NO double /api)
+  private apiUrl = `${environment.apiUrl}/bookings`;
 
   private headers = new HttpHeaders({
     'Content-Type': 'application/json'
@@ -62,8 +62,8 @@ export class BookingService {
 
     let message = 'Something went wrong';
 
-    if (error.error instanceof ErrorEvent) {
-      message = `Client error: ${error.error.message}`;
+    if (error.status === 0) {
+      message = 'Cannot connect to backend (CORS or server down)';
     } else {
       message = `Server error (${error.status}): ${error.message}`;
     }

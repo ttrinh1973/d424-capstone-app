@@ -1,8 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { Observable, catchError, throwError } from 'rxjs';
-import { environment } from '../environments/environment';
-
+import { environment } from 'src/environments/environment';
 
 export interface Flight {
   id: number;
@@ -19,27 +18,27 @@ export interface Flight {
 })
 export class FlightService {
 
-
-   private apiUrl = `${environment.apiUrl}/flights`;
+  // ✅ FIXED: single correct API base URL
+  private apiUrl = `${environment.apiUrl}/flights`;
 
   constructor(private http: HttpClient) {}
 
 
   getAllFlights(): Observable<Flight[]> {
-    return this.http.get<Flight[]>(this.baseUrl)
+    return this.http.get<Flight[]>(this.apiUrl)
       .pipe(catchError(this.handleError));
   }
 
 
   getFlightById(id: number): Observable<Flight> {
-    return this.http.get<Flight>(`${this.baseUrl}/${id}`)
+    return this.http.get<Flight>(`${this.apiUrl}/${id}`)
       .pipe(catchError(this.handleError));
   }
 
 
   searchFlights(departure: string, destination: string): Observable<Flight[]> {
     return this.http.get<Flight[]>(
-      `${this.baseUrl}/search?departure=${departure}&destination=${destination}`
+      `${this.apiUrl}/search?departure=${departure}&destination=${destination}`
     ).pipe(catchError(this.handleError));
   }
 

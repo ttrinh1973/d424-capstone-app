@@ -1,17 +1,22 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { environment } from '../environments/environment';
+import { Observable } from 'rxjs';
+import { environment } from 'src/environments/environment';
 
-@Injectable({ providedIn: 'root' })
+@Injectable({
+  providedIn: 'root'
+})
 export class PaymentService {
 
-   private apiUrl = `${environment.apiUrl}/api/payment`;
+
+  private apiUrl = `${environment.apiUrl}/payment`;
 
   constructor(private http: HttpClient) {}
 
-  processPayment(data: any) {
+
+  processPayment(data: any): Observable<any> {
     return this.http.post(
-      `${this.api}/checkout`,
+      `${this.apiUrl}/checkout`,
       data,
       { responseType: 'text' }
     );
