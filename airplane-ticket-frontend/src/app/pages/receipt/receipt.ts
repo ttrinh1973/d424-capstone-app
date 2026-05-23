@@ -11,12 +11,14 @@ import { RouterModule } from '@angular/router';
 })
 export class ReceiptComponent {
 
-  receipt: any;
+  receipt: any = null;
 
   constructor() {
     const nav = history.state;
-    this.receipt = nav.receipt || null;
 
-    console.log('Receipt Data:', this.receipt);
+
+    this.receipt = nav?.receipt ?? null;
+
+    console.log('Receipt data:', this.receipt);
   }
 }

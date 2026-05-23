@@ -71,18 +71,20 @@ export class PaymentComponent {
 
 
     this.router.navigate(['/receipt'], {
-      queryParams: {
-        bookingId: this.bookingId,
-        passengerName: this.passengerName,
-        email: this.email,
-        price: this.price,
-        flightId: this.flightId,
+      state: {
+        receipt: {
+          bookingId: this.bookingId,
+          flightId: this.flightId,
+          airline: this.airline,
+          passengerName: this.passengerName,
+          email: this.email,
+          price: this.price,
 
-        airline: this.airline,
-        departure: this.departure,
-        destination: this.destination,
-        departureTime: this.departureTime,
-        arrivalTime: this.arrivalTime
+          departure: this.departure,
+          destination: this.destination,
+          departureTime: this.departureTime,
+          arrivalTime: this.arrivalTime
+        }
       }
     });
   }
