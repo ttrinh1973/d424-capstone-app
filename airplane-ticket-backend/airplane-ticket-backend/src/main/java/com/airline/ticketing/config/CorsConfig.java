@@ -15,11 +15,11 @@ public class CorsConfig {
 
                 registry.addMapping("/**")
                         .allowedOrigins(
+                                "http://localhost:4200",
                                 "https://airplane-ticket-frontend.vercel.app"
                         )
-                        .allowedMethods("GET", "POST", "PUT", "DELETE", "OPTIONS")
-                        .allowedHeaders("*")
-                        .allowCredentials(true);
+                        .allowedMethods("*")
+                        .allowedHeaders("*");
             }
         };
     }

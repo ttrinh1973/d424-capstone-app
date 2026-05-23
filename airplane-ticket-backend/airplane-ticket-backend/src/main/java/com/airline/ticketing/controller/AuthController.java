@@ -11,12 +11,24 @@ import com.airline.ticketing.repository.UserRepository;
 
 @RestController
 @RequestMapping("/api/auth")
-@CrossOrigin(origins = "http://localhost:4200")
+@CrossOrigin(
+        origins = {
+                "http://localhost:4200",
+                "https://airplane-ticket-frontend.vercel.app"
+        },
+        allowedHeaders = "*",
+        methods = {
+                RequestMethod.GET,
+                RequestMethod.POST,
+                RequestMethod.PUT,
+                RequestMethod.DELETE,
+                RequestMethod.OPTIONS
+        }
+)
 public class AuthController {
 
   @Autowired
   private UserRepository userRepository;
-
 
   @PostMapping("/login")
   public ResponseEntity<?> login(@RequestBody LoginRequest request) {
@@ -42,6 +54,4 @@ public class AuthController {
             )
     );
   }
-
-
 }
